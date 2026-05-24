@@ -1,20 +1,19 @@
 :root {
-	--noir: #080705;
-	--cave: #0f0d0b;
-	--bois: #1a1612;
-	--ivoire: #f2ede3;
-	--champagne: #8aab8e;
-	--or: #6b8c6f;
-	--bordeaux: #4a1020;
-	--bordeaux2: #6b1a2e;
-	--cuivre: #4a6b4e;
-	--texte: #d4cbb8;
-	--texte2: #8a7f6e;
-	--blanc: #faf8f3;
+	--noir: #080506;
+	--cave: #0f0b0c;
+	--bois: #140f11;
+	--ivoire: #f4eff1;
+	--champagne: #dfd5d8;
+	--or: #a69599;
+	--bordeaux: #801a24;
+	--bordeaux2: #a62432;
+	--cuivre: #66121c;
+	--texte: #e6dcde;
+	--texte2: #a68f94;
+	--blanc: #faf7f8;
 	--radius: 2px;
 }
 
-/* ─── Reset & Base ──────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -38,11 +37,10 @@ body {
 	overflow-x: hidden;
 }
 
-/* ─── Custom Cursor ─────────────────────────────────────── */
 #cursor {
 	width: 8px;
 	height: 8px;
-	background: var(--champagne);
+	background: var(--bordeaux2);
 	border-radius: 50%;
 	position: fixed;
 	top: 0;
@@ -57,7 +55,7 @@ body {
 #cursor-ring {
 	width: 32px;
 	height: 32px;
-	border: 1px solid rgba(138, 171, 142, 0.4);
+	border: 1px solid rgba(166, 36, 50, 0.3);
 	border-radius: 50%;
 	position: fixed;
 	top: 0;
@@ -75,10 +73,9 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
 	width: 56px;
 	height: 56px;
-	border-color: rgba(138, 171, 142, 0.7);
+	border-color: var(--bordeaux2);
 }
 
-/* ─── Noise Overlay ─────────────────────────────────────── */
 body::before {
 	content: "";
 	position: fixed;
@@ -89,7 +86,6 @@ body::before {
 	z-index: 9997;
 }
 
-/* ─── Navigation ─────────────────────────────────────────── */
 nav {
 	position: fixed;
 	top: 0;
@@ -106,17 +102,17 @@ nav {
 		padding 0.4s;
 }
 nav.scrolled {
-	background: rgba(8, 7, 5, 0.92);
+	background: rgba(8, 5, 6, 0.92);
 	backdrop-filter: blur(12px);
 	padding: 1.2rem 4rem;
-	border-bottom: 1px solid rgba(138, 171, 142, 0.08);
+	border-bottom: 1px solid rgba(166, 143, 148, 0.08);
 }
 .nav-logo {
 	font-family: "Playfair Display", serif;
 	font-size: 1rem;
 	letter-spacing: 0.3em;
 	text-transform: uppercase;
-	color: var(--champagne);
+	color: var(--ivoire);
 	text-decoration: none;
 }
 .nav-links {
@@ -141,17 +137,16 @@ nav.scrolled {
 	left: 0;
 	width: 0;
 	height: 1px;
-	background: var(--champagne);
+	background: var(--bordeaux2);
 	transition: width 0.4s ease;
 }
 .nav-links a:hover {
-	color: var(--champagne);
+	color: var(--ivoire);
 }
 .nav-links a:hover::after {
 	width: 100%;
 }
 
-/* ─── HERO ───────────────────────────────────────────────── */
 #hero {
 	min-height: 100vh;
 	position: relative;
@@ -162,30 +157,27 @@ nav.scrolled {
 	background: var(--cave);
 }
 
-/* Abstract wine-cave background */
 .hero-bg {
 	position: absolute;
 	inset: 0;
 	background:
 		radial-gradient(
-			ellipse 60% 80% at 70% 100%,
-			rgba(74, 16, 32, 0.5) 0%,
-			transparent 60%
+			circle 600px at 70% 80%,
+			rgba(166, 36, 50, 0.12) 0%,
+			transparent 80%
 		),
 		radial-gradient(
-			ellipse 40% 60% at 20% 20%,
-			rgba(107, 140, 111, 0.06) 0%,
-			transparent 50%
-		),
-		radial-gradient(
-			ellipse 80% 60% at 50% 110%,
-			rgba(26, 22, 18, 0.9) 0%,
+			circle 500px at 20% 30%,
+			rgba(102, 18, 28, 0.08) 0%,
 			transparent 70%
 		),
-		var(--cave);
+		radial-gradient(
+			ellipse 100% 70% at 50% 100%,
+			#12090b 0%,
+			var(--noir) 100%
+		);
 }
 
-/* Subtle arc lines - cave vaulting */
 .hero-arcs {
 	position: absolute;
 	inset: 0;
@@ -197,10 +189,10 @@ nav.scrolled {
 	height: 120%;
 	top: -10%;
 	left: -10%;
-	opacity: 0.04;
+	opacity: 0.18;
+	mix-blend-mode: screen;
 }
 
-/* Floating particles */
 .particles {
 	position: absolute;
 	inset: 0;
@@ -210,7 +202,7 @@ nav.scrolled {
 	position: absolute;
 	width: 1px;
 	height: 1px;
-	background: var(--champagne);
+	background: var(--bordeaux);
 	border-radius: 50%;
 	animation: float-up linear infinite;
 	opacity: 0;
@@ -222,10 +214,10 @@ nav.scrolled {
 		opacity: 0;
 	}
 	10% {
-		opacity: 0.6;
+		opacity: 0.4;
 	}
 	90% {
-		opacity: 0.2;
+		opacity: 0.15;
 	}
 	100% {
 		transform: translateY(-10vh) translateX(20px);
@@ -233,11 +225,10 @@ nav.scrolled {
 	}
 }
 
-/* Hero Left - Text */
 .hero-text {
 	position: relative;
 	z-index: 2;
-	padding: 0 4rem 8rem 6rem;
+	padding: 0 0 4rem 6rem;
 	align-self: center;
 }
 
@@ -246,8 +237,8 @@ nav.scrolled {
 	font-size: 0.65rem;
 	letter-spacing: 0.35em;
 	text-transform: uppercase;
-	color: var(--champagne);
-	opacity: 0.8;
+	color: var(--bordeaux2);
+	font-weight: 400;
 	margin-bottom: 2rem;
 	display: flex;
 	align-items: center;
@@ -258,7 +249,7 @@ nav.scrolled {
 	display: inline-block;
 	width: 2rem;
 	height: 1px;
-	background: var(--champagne);
+	background: var(--bordeaux2);
 }
 
 .hero-name {
@@ -266,16 +257,16 @@ nav.scrolled {
 	font-size: clamp(3.5rem, 6vw, 6rem);
 	font-weight: 400;
 	line-height: 1.05;
+	margin-bottom: 2rem;
 	color: var(--ivoire);
 	letter-spacing: -0.02em;
-	margin-bottom: 1rem;
 	opacity: 0;
 	transform: translateY(30px);
 	animation: reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
 }
 .hero-name em {
 	font-style: italic;
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 
 .hero-title {
@@ -296,7 +287,7 @@ nav.scrolled {
 	color: var(--texte);
 	max-width: 400px;
 	line-height: 1.6;
-	border-left: 2px solid var(--champagne);
+	border-left: 2px solid var(--bordeaux2);
 	padding-left: 1.5rem;
 	margin-bottom: 4rem;
 	opacity: 0;
@@ -311,10 +302,10 @@ nav.scrolled {
 	font-size: 0.7rem;
 	letter-spacing: 0.25em;
 	text-transform: uppercase;
-	color: var(--champagne);
+	color: var(--ivoire);
 	text-decoration: none;
 	padding: 1rem 2rem;
-	border: 1px solid rgba(138, 171, 142, 0.3);
+	border: 1px solid rgba(166, 36, 50, 0.2);
 	transition: all 0.4s ease;
 	opacity: 0;
 	animation: reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
@@ -325,7 +316,7 @@ nav.scrolled {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: rgba(138, 171, 142, 0.06);
+	background: rgba(166, 36, 50, 0.08);
 	transform: translateX(-100%);
 	transition: transform 0.4s ease;
 }
@@ -333,7 +324,8 @@ nav.scrolled {
 	transform: translateX(0);
 }
 .hero-cta:hover {
-	border-color: rgba(138, 171, 142, 0.7);
+	border-color: var(--bordeaux2);
+	box-shadow: 0 0 15px rgba(166, 36, 50, 0.15);
 }
 .hero-cta svg {
 	transition: transform 0.3s;
@@ -342,7 +334,6 @@ nav.scrolled {
 	transform: translateX(4px);
 }
 
-/* Hero Right - Portrait */
 .hero-portrait {
 	position: relative;
 	z-index: 2;
@@ -351,7 +342,7 @@ nav.scrolled {
 	justify-content: center;
 	height: 100vh;
 	padding-right: 4rem;
-	overflow: hidden;
+	overflow: visible;
 }
 
 .portrait-wrapper {
@@ -361,18 +352,17 @@ nav.scrolled {
 	opacity: 0;
 	transform: translateY(20px);
 	animation: reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+	overflow: visible;
 }
 .portrait-wrapper img {
 	height: 100%;
 	width: auto;
 	object-fit: contain;
 	object-position: bottom;
-	filter: contrast(1.05) brightness(0.95);
-	mix-blend-mode: luminosity;
-	opacity: 0.85;
+	filter: contrast(1.02) brightness(0.95) grayscale(0.1);
+	opacity: 0.9;
 }
 
-/* Halo effect behind portrait */
 .portrait-halo {
 	position: absolute;
 	bottom: 0;
@@ -382,55 +372,18 @@ nav.scrolled {
 	height: 40%;
 	background: radial-gradient(
 		ellipse,
-		rgba(74, 16, 32, 0.6) 0%,
+		rgba(166, 36, 50, 0.1) 0%,
 		transparent 70%
 	);
 	pointer-events: none;
 	z-index: -1;
 }
 
-/* Millésime badge */
-.millesime-badge {
-	position: absolute;
-	top: 40%;
-	right: -1rem;
-	width: 90px;
-	height: 90px;
-	border: 1px solid rgba(138, 171, 142, 0.25);
-	border-radius: 50%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	animation: rotate-slow 20s linear infinite;
-}
-.millesime-badge span:first-child {
-	font-family: "DM Mono", monospace;
-	font-size: 1.1rem;
-	color: var(--champagne);
-}
-.millesime-badge span:last-child {
-	font-family: "DM Mono", monospace;
-	font-size: 0.45rem;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	color: var(--texte2);
-}
-@keyframes rotate-slow {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-/* Hero bottom decoration */
 .hero-bottom {
 	position: absolute;
 	bottom: 2.5rem;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translateY(50%);
 	z-index: 10;
 	display: flex;
 	flex-direction: column;
@@ -449,7 +402,7 @@ nav.scrolled {
 .scroll-line {
 	width: 1px;
 	height: 40px;
-	background: linear-gradient(to bottom, var(--champagne), transparent);
+	background: linear-gradient(to bottom, var(--bordeaux2), transparent);
 	animation: pulse-line 2s ease-in-out infinite;
 }
 @keyframes pulse-line {
@@ -462,7 +415,6 @@ nav.scrolled {
 	}
 }
 
-/* ─── Shared Section Styles ──────────────────────────────── */
 section {
 	position: relative;
 	overflow: hidden;
@@ -479,8 +431,8 @@ section {
 	font-size: 0.62rem;
 	letter-spacing: 0.35em;
 	text-transform: uppercase;
-	color: var(--champagne);
-	opacity: 0.7;
+	color: var(--bordeaux2);
+	font-weight: 500;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
@@ -504,7 +456,7 @@ section {
 }
 .section-title em {
 	font-style: italic;
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 
 @keyframes reveal {
@@ -514,7 +466,6 @@ section {
 	}
 }
 
-/* Scroll reveal */
 .reveal {
 	opacity: 0;
 	transform: translateY(40px);
@@ -539,7 +490,6 @@ section {
 	transition-delay: 0.6s;
 }
 
-/* ─── VISION ─────────────────────────────────────────────── */
 #vision {
 	padding: 14rem 0;
 	background: var(--cave);
@@ -558,8 +508,8 @@ section {
 	font-family: "Playfair Display", serif;
 	font-size: 8rem;
 	font-weight: 900;
-	color: var(--bordeaux);
-	opacity: 0.15;
+	color: var(--noir);
+	opacity: 0.3;
 	line-height: 1;
 	margin-bottom: -2rem;
 	user-select: none;
@@ -584,15 +534,13 @@ section {
 	gap: 2rem;
 	margin-top: 5rem;
 	padding-top: 4rem;
-	border-top: 1px solid rgba(138, 171, 142, 0.1);
-}
-.stat-item {
+	border-top: 1px solid rgba(166, 143, 148, 0.1);
 }
 .stat-number {
 	font-family: "Playfair Display", serif;
 	font-size: 3rem;
 	font-weight: 400;
-	color: var(--champagne);
+	color: var(--bordeaux2);
 	line-height: 1;
 	margin-bottom: 0.5rem;
 }
@@ -604,7 +552,6 @@ section {
 	color: var(--texte2);
 }
 
-/* ─── TIMELINE ───────────────────────────────────────────── */
 #timeline {
 	padding: 12rem 0;
 	background: var(--bois);
@@ -615,7 +562,7 @@ section {
 	inset: 0;
 	background: radial-gradient(
 		ellipse 100% 50% at 50% 100%,
-		rgba(74, 16, 32, 0.15) 0%,
+		rgba(166, 36, 50, 0.03) 0%,
 		transparent 60%
 	);
 }
@@ -637,8 +584,8 @@ section {
 	width: 1px;
 	background: linear-gradient(
 		to bottom,
-		var(--champagne),
-		rgba(138, 171, 142, 0.1)
+		var(--bordeaux2),
+		rgba(166, 36, 50, 0.1)
 	);
 }
 
@@ -658,15 +605,15 @@ section {
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: var(--champagne);
+	background: var(--bordeaux2);
 	transform: translateX(-50%);
-	box-shadow: 0 0 16px rgba(138, 171, 142, 0.4);
+	box-shadow: 0 0 16px rgba(166, 36, 50, 0.4);
 }
 .timeline-dot::before {
 	content: "";
 	position: absolute;
 	inset: -6px;
-	border: 1px solid rgba(138, 171, 142, 0.2);
+	border: 1px solid rgba(166, 36, 50, 0.2);
 	border-radius: 50%;
 }
 
@@ -674,8 +621,8 @@ section {
 	font-family: "DM Mono", monospace;
 	font-size: 0.65rem;
 	letter-spacing: 0.2em;
-	color: var(--champagne);
-	opacity: 0.7;
+	color: var(--bordeaux2);
+	font-weight: 500;
 	margin-bottom: 1rem;
 }
 .timeline-role {
@@ -689,7 +636,7 @@ section {
 	font-family: "Cormorant Garamond", serif;
 	font-size: 1.1rem;
 	font-style: italic;
-	color: var(--champagne);
+	color: var(--or);
 	margin-bottom: 1.5rem;
 }
 .timeline-desc {
@@ -712,11 +659,10 @@ section {
 	text-transform: uppercase;
 	color: var(--texte2);
 	padding: 0.35rem 0.8rem;
-	border: 1px solid rgba(138, 171, 142, 0.12);
+	border: 1px solid rgba(166, 143, 148, 0.12);
 	border-radius: var(--radius);
 }
 
-/* ─── EXPERTISE ──────────────────────────────────────────── */
 #expertise {
 	padding: 12rem 0;
 	background: var(--cave);
@@ -726,8 +672,8 @@ section {
 	grid-template-columns: repeat(4, 1fr);
 	gap: 1.5px;
 	margin-top: 6rem;
-	background: rgba(138, 171, 142, 0.06);
-	border: 1px solid rgba(138, 171, 142, 0.08);
+	background: rgba(166, 143, 148, 0.06);
+	border: 1px solid rgba(166, 143, 148, 0.08);
 }
 .expertise-card {
 	background: var(--cave);
@@ -742,7 +688,7 @@ section {
 	inset: 0;
 	background: radial-gradient(
 		ellipse 80% 80% at 50% 120%,
-		rgba(74, 16, 32, 0.3),
+		rgba(166, 36, 50, 0.08),
 		transparent
 	);
 	opacity: 0;
@@ -759,11 +705,14 @@ section {
 	width: 40px;
 	height: 40px;
 	margin-bottom: 2rem;
-	opacity: 0.5;
-	transition: opacity 0.3s;
+	opacity: 0.4;
+	transition:
+		opacity 0.3s,
+		stroke 0.3s;
 }
 .expertise-card:hover .expertise-icon {
 	opacity: 1;
+	stroke: var(--bordeaux2);
 }
 
 .expertise-name {
@@ -775,7 +724,7 @@ section {
 	transition: color 0.3s;
 }
 .expertise-card:hover .expertise-name {
-	color: var(--champagne);
+	color: var(--blanc);
 }
 
 .expertise-desc {
@@ -788,13 +737,13 @@ section {
 .expertise-level {
 	margin-top: 2rem;
 	height: 1px;
-	background: rgba(138, 171, 142, 0.1);
+	background: rgba(166, 143, 148, 0.1);
 	position: relative;
 	overflow: hidden;
 }
 .expertise-level-bar {
 	height: 100%;
-	background: linear-gradient(to right, var(--champagne), var(--or));
+	background: linear-gradient(to right, var(--bordeaux), var(--bordeaux2));
 	width: 0;
 	transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -802,7 +751,6 @@ section {
 	width: var(--level);
 }
 
-/* ─── PROJECTS ───────────────────────────────────────────── */
 #projects {
 	padding: 12rem 0;
 	background: var(--bois);
@@ -812,7 +760,7 @@ section {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1.5px;
 	margin-top: 6rem;
-	background: rgba(138, 171, 142, 0.04);
+	background: rgba(166, 143, 148, 0.08);
 }
 .project-card {
 	position: relative;
@@ -830,20 +778,19 @@ section {
 	justify-content: flex-end;
 	background: linear-gradient(
 		to top,
-		rgba(8, 7, 5, 0.9) 40%,
-		rgba(8, 7, 5, 0.1) 100%
+		rgba(8, 5, 6, 0.95) 40%,
+		rgba(8, 5, 6, 0.1) 100%
 	);
 	transition: background 0.5s;
 }
 .project-card:hover .project-card-inner {
 	background: linear-gradient(
 		to top,
-		rgba(74, 16, 32, 0.95) 50%,
-		rgba(8, 7, 5, 0.2) 100%
+		rgba(15, 11, 12, 0.98) 50%,
+		rgba(8, 5, 6, 0.2) 100%
 	);
 }
 
-/* Abstract project backgrounds */
 .project-bg {
 	position: absolute;
 	inset: 0;
@@ -857,55 +804,55 @@ section {
 	background:
 		radial-gradient(
 			ellipse 60% 60% at 30% 40%,
-			rgba(107, 140, 111, 0.12) 0%,
+			rgba(166, 36, 50, 0.04) 0%,
 			transparent 60%
 		),
 		radial-gradient(
 			ellipse 80% 80% at 80% 80%,
-			rgba(74, 16, 32, 0.4) 0%,
+			rgba(102, 18, 28, 0.03) 0%,
 			transparent 70%
 		),
-		linear-gradient(135deg, #0f0d0b 0%, #1a1612 100%);
+		linear-gradient(135deg, #0f0b0c 0%, #140f11 100%);
 }
 .project-bg-2 {
 	background:
 		radial-gradient(
 			ellipse 50% 70% at 70% 30%,
-			rgba(74, 107, 78, 0.15) 0%,
+			rgba(166, 36, 50, 0.04) 0%,
 			transparent 60%
 		),
 		radial-gradient(
 			ellipse 80% 60% at 20% 80%,
-			rgba(74, 16, 32, 0.5) 0%,
+			rgba(20, 15, 17, 0.2) 0%,
 			transparent 70%
 		),
-		linear-gradient(135deg, #12100e 0%, #1f1b16 100%);
+		linear-gradient(135deg, #110d0e 0%, #1a1417 100%);
 }
 .project-bg-3 {
 	background:
 		radial-gradient(
 			ellipse 70% 50% at 50% 60%,
-			rgba(138, 171, 142, 0.08) 0%,
+			rgba(166, 36, 50, 0.04) 0%,
 			transparent 60%
 		),
 		radial-gradient(
 			ellipse 60% 80% at 10% 20%,
-			rgba(74, 16, 32, 0.3) 0%,
+			rgba(15, 11, 12, 0.2) 0%,
 			transparent 70%
 		),
-		linear-gradient(135deg, #0e0c0a 0%, #1c1814 100%);
+		linear-gradient(135deg, #0d090a 0%, #171113 100%);
 }
 .project-bg-4,
 .project-bg-5,
 .project-bg-6 {
-	background: linear-gradient(135deg, #110f0d 0%, #1a1612 100%);
+	background: linear-gradient(135deg, #0f0b0c 0%, #140f11 100%);
 }
 
 .project-num {
 	font-family: "DM Mono", monospace;
 	font-size: 0.6rem;
-	color: var(--champagne);
-	opacity: 0.5;
+	color: var(--bordeaux2);
+	font-weight: 500;
 	letter-spacing: 0.2em;
 	margin-bottom: 1rem;
 }
@@ -939,10 +886,9 @@ section {
 	font-size: 0.55rem;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	color: var(--champagne);
-	opacity: 0.6;
+	color: var(--or);
 	padding: 0.2rem 0.6rem;
-	border: 1px solid rgba(138, 171, 142, 0.15);
+	border: 1px solid rgba(166, 143, 148, 0.15);
 }
 
 .project-arrow {
@@ -954,14 +900,13 @@ section {
 	transition:
 		opacity 0.3s,
 		transform 0.3s;
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 .project-card:hover .project-arrow {
 	opacity: 1;
 	transform: translate(0, 0);
 }
 
-/* ─── PHILOSOPHY ─────────────────────────────────────────── */
 #philosophy {
 	padding: 14rem 0;
 	background: var(--cave);
@@ -981,7 +926,7 @@ section {
 	margin-bottom: 2rem;
 }
 .philosophy-intro p span {
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 
 .philosophy-pillars {
@@ -993,12 +938,12 @@ section {
 }
 .pillar {
 	padding: 3rem;
-	border: 1px solid rgba(138, 171, 142, 0.06);
+	border: 1px solid rgba(166, 143, 148, 0.06);
 	position: relative;
 	transition: border-color 0.4s;
 }
 .pillar:hover {
-	border-color: rgba(138, 171, 142, 0.2);
+	border-color: rgba(166, 36, 50, 0.2);
 }
 .pillar::before {
 	content: "";
@@ -1007,7 +952,7 @@ section {
 	left: 0;
 	width: 0;
 	height: 1px;
-	background: var(--champagne);
+	background: var(--bordeaux2);
 	transition: width 0.6s ease;
 }
 .pillar:hover::before {
@@ -1017,8 +962,8 @@ section {
 .pillar-number {
 	font-family: "DM Mono", monospace;
 	font-size: 0.6rem;
-	color: var(--champagne);
-	opacity: 0.5;
+	color: var(--bordeaux2);
+	font-weight: 500;
 	letter-spacing: 0.2em;
 	margin-bottom: 1.5rem;
 }
@@ -1035,7 +980,6 @@ section {
 	line-height: 1.8;
 }
 
-/* ─── CONTACT ────────────────────────────────────────────── */
 #contact {
 	padding: 12rem 0;
 	background: var(--bois);
@@ -1051,7 +995,7 @@ section {
 	background: linear-gradient(
 		to right,
 		transparent,
-		rgba(138, 171, 142, 0.3),
+		rgba(166, 36, 50, 0.15),
 		transparent
 	);
 }
@@ -1072,7 +1016,7 @@ section {
 }
 .contact-heading em {
 	font-style: italic;
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 .contact-sub {
 	font-family: "Cormorant Garamond", serif;
@@ -1092,18 +1036,17 @@ section {
 	align-items: center;
 	justify-content: space-between;
 	padding: 2rem 0;
-	border-bottom: 1px solid rgba(138, 171, 142, 0.08);
+	border-bottom: 1px solid rgba(166, 143, 148, 0.08);
 	text-decoration: none;
 	color: var(--texte);
 	transition: all 0.3s;
-	group: true;
 }
 .contact-link:first-child {
-	border-top: 1px solid rgba(138, 171, 142, 0.08);
+	border-top: 1px solid rgba(166, 143, 148, 0.08);
 }
 .contact-link:hover {
 	padding-left: 1rem;
-	color: var(--champagne);
+	color: var(--ivoire);
 }
 .contact-link-left {
 	display: flex;
@@ -1114,13 +1057,10 @@ section {
 	font-size: 0.6rem;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: var(--champagne);
-	opacity: 0.5;
+	color: var(--bordeaux2);
+	font-weight: 500;
 	margin-bottom: 0.3rem;
 	transition: opacity 0.3s;
-}
-.contact-link:hover .contact-link-platform {
-	opacity: 1;
 }
 .contact-link-value {
 	font-family: "Playfair Display", serif;
@@ -1130,10 +1070,10 @@ section {
 	transition: color 0.3s;
 }
 .contact-link:hover .contact-link-value {
-	color: var(--champagne);
+	color: var(--bordeaux2);
 }
 .contact-link-arrow {
-	color: var(--champagne);
+	color: var(--bordeaux2);
 	opacity: 0;
 	transition:
 		opacity 0.3s,
@@ -1144,10 +1084,9 @@ section {
 	transform: translateX(4px);
 }
 
-/* ─── FOOTER ─────────────────────────────────────────────── */
 footer {
 	padding: 3rem 4rem;
-	border-top: 1px solid rgba(138, 171, 142, 0.06);
+	border-top: 1px solid rgba(166, 143, 148, 0.06);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1167,7 +1106,6 @@ footer {
 	opacity: 0.5;
 }
 
-/* ─── Divider ornament ───────────────────────────────────── */
 .ornament {
 	display: flex;
 	align-items: center;
@@ -1179,16 +1117,15 @@ footer {
 .ornament-line {
 	width: 4rem;
 	height: 1px;
-	background: rgba(138, 171, 142, 0.2);
+	background: rgba(166, 36, 50, 0.15);
 }
 .ornament-diamond {
 	width: 5px;
 	height: 5px;
-	background: rgba(138, 171, 142, 0.4);
+	background: rgba(166, 36, 50, 0.3);
 	transform: rotate(45deg);
 }
 
-/* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
 	#hero {
 		grid-template-columns: 1fr;

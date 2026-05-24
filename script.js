@@ -20,13 +20,11 @@ document.addEventListener("mousemove", (e) => {
 	requestAnimationFrame(animRing);
 })();
 
-/* Nav scroll */
 const nav = document.getElementById("nav");
 window.addEventListener("scroll", () => {
 	nav.classList.toggle("scrolled", window.scrollY > 60);
 });
 
-/* Particles */
 const particlesEl = document.getElementById("particles");
 for (let i = 0; i < 24; i++) {
 	const p = document.createElement("div");
@@ -41,14 +39,12 @@ for (let i = 0; i < 24; i++) {
 	particlesEl.appendChild(p);
 }
 
-/* Scroll reveal */
 const reveals = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver(
 	(entries) => {
 		entries.forEach((e) => {
 			if (e.isIntersecting) {
 				e.target.classList.add("visible");
-				// Also trigger expertise bars
 				if (e.target.classList.contains("expertise-card")) {
 					e.target.classList.add("visible");
 				}
@@ -61,7 +57,6 @@ const io = new IntersectionObserver(
 
 reveals.forEach((el) => io.observe(el));
 
-/* Expertise card observer for level bars */
 const expertiseCards = document.querySelectorAll(".expertise-card");
 const ioExp = new IntersectionObserver(
 	(entries) => {
@@ -75,7 +70,6 @@ const ioExp = new IntersectionObserver(
 );
 expertiseCards.forEach((c) => ioExp.observe(c));
 
-/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
 	a.addEventListener("click", (e) => {
 		const target = document.querySelector(a.getAttribute("href"));
